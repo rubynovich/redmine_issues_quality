@@ -1,0 +1,28 @@
+.contextual
+  = link_to l(:label_rating_new), {:action => :new}, :class => 'icon icon-add'
+
+%h2=l(:label_rating_plural)
+
+- if @ratings.any?
+  %table.list
+    %thead
+      %tr
+        %th=l(:field_name)
+        %th=l(:button_sort)
+        %th
+    %tbody
+      - @ratings.each do |rating|
+        %tr{:class=>cycle("odd", "even")}
+          %td
+            = link_to h(rating.name), rating_path(rating)
+            = "(#{rating.issues.count})"
+          %td{:align=>"center", :style=>"width:15%;"}= reorder_links('rating', {:action => 'update', :id => rating}, :put)
+          %td.buttons
+            = link_to l(:button_update), {:action => :edit, :id => rating.id}, :class => 'icon icon-edit'
+            = link_to(l(:button_delete), rating_path(rating), :method => :delete, :confirm => l(:text_are_you_sure), :class => 'icon icon-del')
+
+- else
+  %p.nodata
+    = l(:label_no_data)
+
+- html_title(l(:label_issues_quality_plural))
