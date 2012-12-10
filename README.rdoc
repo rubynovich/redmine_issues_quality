@@ -1,3 +1,32 @@
-= issues_quality
+= Оценка качества выполнения задач (модуль для Redmine)
 
-Description goes here
+Позволяет оценивать задачи перед их закрытием. В настройках модуля надо установить статус, при котором задачу можно закрыть (Выполнена, например)
+
+== Installation
+
+  cd vendor/plugins
+  git clone git://github.com/rubynovich/redmine_issues_quality.git
+  cd ../..
+  rake db:migrate:plugins RAILS_ENV=production  
+
+*or*
+
+  ./script/plugin -v install git://github.com/rubynovich/redmine_issues_quality.git
+  rake db:migrate:plugins RAILS_ENV=production
+
+== Update
+
+  cd vendor/plugins/redmine_issues_quality
+  git pull
+  cd ../../..
+  rake db:migrate:plugins RAILS_ENV=production  
+  
+*or*
+
+  ./script/plugin update
+  rake db:migrate:plugins RAILS_ENV=production    
+
+== Remove
+
+  rake db:migrate:plugin NAME=redmine_issues_quality VERSION=0 RAILS_ENV=production
+  ./script/plugin remove redmine_issues_quality
