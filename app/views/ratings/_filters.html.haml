@@ -1,0 +1,49 @@
+- form_tag({}, :method => :get) do
+  %fieldset
+    %legend= l(:label_filter_plural)
+
+    %label{:for=>'project_id'}= l(:field_project) + ":"
+    %select{:id => 'project_id', :name => 'project_id', :class => "small", :onchange => "this.form.submit(); return false;"}
+      %option
+      - Project.active.all(:order => :name).each do |project|
+        - if params[:project_id].to_i == project.id
+          %option{:value => project.id, :selected => "selected"}
+            = project.name
+        - else
+          %option{:value => project.id}
+            = project.name
+    
+    %br
+    
+    %label{:for=>'author_id'}= l(:field_author) + ":"
+    %select{:id => 'author_id', :name => 'author_id', :class => "small", :onchange => "this.form.submit(); return false;"}
+      %option
+      - User.active.all(:order => 'lastname, firstname').each do |user|
+        - if params[:author_id].to_i == user.id
+          %option{:value => user.id, :selected => "selected"}
+            = user.name
+        - else
+          %option{:value => user.id}
+            = user.name
+
+    %label{:for=>'assigned_to_id'}= l(:field_assigned_to) + ":"
+    %select{:id => 'assigned_to_id', :name => 'assigned_to_id', :class => "small", :onchange => "this.form.submit(); return false;"}
+      %option
+      - User.active.all(:order => 'lastname, firstname').each do |user|
+        - if params[:assigned_to_id].to_i == user.id
+          %option{:value => user.id, :selected => "selected"}
+            = user.name
+        - else
+          %option{:value => user.id}
+            = user.name
+ 
+    %label{:for=>'id'}= l(:field_rating) + ":"
+    %select{:id => 'id', :name => 'id', :class => "small", :onchange => "this.form.submit(); return false;"}
+      %option
+      - Rating.all(:order => :position).each do |rating|
+        - if params[:id].to_i == rating.id
+          %option{:value => rating.id, :selected => "selected"}
+            = rating.name
+        - else
+          %option{:value => rating.id}
+            = rating.name

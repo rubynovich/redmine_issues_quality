@@ -3,7 +3,8 @@ class RatingsController < ApplicationController
   layout 'admin'
   before_filter :require_admin
   before_filter :new_rating, :only => [:new, :create]
-  before_filter :find_rating, :only => [:edit, :update, :destroy]
+  before_filter :find_rating, :only => [:edit, :update, :destroy, :show]
+  before_filter :get_issues, :only => [:index, :show]
   
   helper :sort
   include SortHelper
@@ -13,24 +14,6 @@ class RatingsController < ApplicationController
   end
   
   def show
-    sort_init 'updated_on', 'desc'
-    sort_update 'start_date', 'due_date', 'updated_on'
-
-    @scope = Issue.open(false).
-      with_rating.
-      eql_field(:project_id, params[:project_id]).
-      eql_field(:author_id, params[:author_id]).
-      eql_field(:assigned_to_id, params[:assigned_to_id]).
-      eql_field(:rating_id, params[:id])
-      
-    @count = @scope.count
-    @limit = per_page_option    
-    @pages = Paginator.new self, @count, @limit, params[:page]
-    @offset ||= @pages.current.offset
-    @issues =  @scope.find  :all,
-                            :order => sort_clause,
-                            :limit  =>  @limit,
-                            :offset =>  @offset     
   end
   
   def new
@@ -72,4 +55,25 @@ class RatingsController < ApplicationController
     def find_rating
       @rating = Rating.find(params[:id])
     end
+    
+    def get_issues
+      sort_init 'updated_on', 'desc'
+      sort_update ['start_date', 'due_date', 'updated_on']
+
+      @scope = Issue.open(false).
+        with_rating.
+        eql_field(:project_id, params[:project_id]).
+        eql_field(:author_id, params[:author_id]).
+        eql_field(:assigned_to_id, params[:assigned_to_id]).
+        eql_field(:rating_id, params[:id])
+        
+      @count = @scope.count
+      @limit = per_page_option    
+      @pages = Paginator.new self, @count, @limit, params[:page]
+      @offset ||= @pages.current.offset
+      @issues =  @scope.find  :all,
+                              :order => sort_clause,
+                              :limit  =>  @limit,
+                              :offset =>  @offset     
+    end      
 end

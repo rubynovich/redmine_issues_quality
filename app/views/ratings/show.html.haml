@@ -1,0 +1,17 @@
+.contextual
+  = link_to l(:label_rating_new), {:action => :new}, :class => 'icon icon-add'
+
+%h2
+  = link_to l(:label_rating_plural), :action => :show
+  &#187; 
+  =h @rating.name
+
+- if @issues.any?
+  = render :partial => 'filters', :locals => {:params => params}
+  = render :partial => 'list', :locals => {:collection => @issues}
+  %p.pagination= pagination_links_full @pages, @count
+- else
+  %p.nodata
+    = l(:label_no_data)
+
+- html_title(l(:label_quality_plural))

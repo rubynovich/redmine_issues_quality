@@ -25,4 +25,14 @@
   %p.nodata
     = l(:label_no_data)
 
-- html_title(l(:label_issues_quality_plural))
+%h2=l(:label_quality_plural)
+
+- if @issues.any?
+  = render :partial => 'filters', :locals => {:params => params}
+  = render :partial => 'list', :locals => {:collection => @issues}
+  %p.pagination= pagination_links_full @pages, @count
+- else
+  %p.nodata
+    = l(:label_no_data)
+
+- html_title(l(:label_quality_plural))

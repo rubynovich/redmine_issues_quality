@@ -18,7 +18,7 @@ module IssuesQualityPlugin
         
         belongs_to :rating
         
-        if Rails::VERSION::MAJOR < 3
+        if Rails::VERSION::MAJOR >= 3
           scope :eql_field, lambda { |field, item|
             if item.present? && field.present?
               {:conditions => {field => item}}
