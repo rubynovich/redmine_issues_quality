@@ -1,4 +1,4 @@
-- if (Setting[:plugin_redmine_issues_quality][:issue_status].to_i == issue.status_id) && ((issue.author == User.current) || (User.current.admin?))
+- if (Setting[:plugin_redmine_issues_quality][:issue_status].to_i == issue.status_id)
   %h3=l(:label_rate_issues_quality)+":"
   - @ratings = Rating.all(:order => :position)
   - @ratings.each do |rating|    

@@ -13,7 +13,7 @@ module IssuesQualityPlugin
         safe_attributes 'rating_id'
         
         validates_presence_of :rating_id, :if => lambda{ |o|
-          o.status.is_closed?
+          o.status.is_closed? && Setting[:plugin_redmine_issues_quality][:issue_status].to_i == Issue.find(o.id).status_id
         }
         
         belongs_to :rating
