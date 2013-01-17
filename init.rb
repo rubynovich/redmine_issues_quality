@@ -26,12 +26,13 @@ else
 end
 
 object_to_prepare.to_prepare do
-  [:issue].each do |cl|
+  [:issue, :issues_helper].each do |cl|
     require "issues_quality_#{cl}_patch"
   end
 
   [ 
     [Issue, IssuesQualityPlugin::IssuePatch],
+    [IssuesHelper, IssuesQualityPlugin::IssuesHelperPatch]
   ].each do |cl, patch|
     cl.send(:include, patch) unless cl.included_modules.include? patch
   end
