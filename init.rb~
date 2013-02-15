@@ -4,7 +4,7 @@ require 'redmine_issues_quality/hooks'
 Redmine::Plugin.register :redmine_issues_quality do
   name 'Issues quality'
   author 'Roman Shipiev'
-  description "The plugin allows you to rate the quality of issues before they are closed. In the settings of the module you need to set the status in which the problem can be close"
+  description 'Позволяет оценивать задачи перед их закрытием. В настройках модуля надо установить статус, при котором задачу можно закрыть (Выполнена, например)'
   version '0.0.1'
   url 'http://github.com/rubynovich/redmine_issues_quality.git'
   author_url 'http://roman.shipiev.me'

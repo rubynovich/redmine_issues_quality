@@ -1,3 +1,9 @@
 # English strings go here for Rails i18n
 en:
-  my_label: "My label"
+  label_rating_plural: "Rates of quality"
+  label_rating: "Rate of quality"
+  label_rating_new: "New rate of quality"
+  label_quality_plural: "Quality"
+  label_quality: "Quality"
+  label_rate_issues_quality: "Rate of issues quality"
+  field_rating: "Issues quality"

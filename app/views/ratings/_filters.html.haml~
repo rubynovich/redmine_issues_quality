@@ -1,4 +1,4 @@
-%form{:method => :get}
+- form_tag({}, :method => :get) do
   %fieldset
     %legend= l(:label_filter_plural)
 
@@ -12,9 +12,9 @@
         - else
           %option{:value => project.id}
             = project.name
-
+    
     %br
-
+    
     %label{:for=>'author_id'}= l(:field_author) + ":"
     %select{:id => 'author_id', :name => 'author_id', :class => "small", :onchange => "this.form.submit(); return false;"}
       %option
@@ -36,7 +36,7 @@
         - else
           %option{:value => user.id}
             = user.name
-
+ 
     %label{:for=>'id'}= l(:field_rating) + ":"
     %select{:id => 'id', :name => 'id', :class => "small", :onchange => "this.form.submit(); return false;"}
       %option

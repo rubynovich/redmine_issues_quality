@@ -1,0 +1,9 @@
+# English strings go here for Rails i18n
+en:
+  label_rating_plural: "Критерии качества"
+  label_rating: "Критерий качества"
+  label_rating_new: "Новый критерий качества"
+  label_quality_plural: "Оценки качества"
+  label_quality: "Оценка качества"
+  label_rate_issues_quality: "Rate of issues quality"
+  field_rating: "Качество выполнения"
