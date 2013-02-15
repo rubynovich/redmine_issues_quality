@@ -1,7 +1,7 @@
-- if (Setting[:plugin_redmine_issues_quality][:issue_status].to_i == issue.status_id)
+- if (Setting[:plugin_redmine_issues_quality][:issue_status].to_i == Issue.find(issue.id).status_id)
   %h3=l(:label_rate_issues_quality)+":"
   - @ratings = Rating.all(:order => :position)
-  - @ratings.each do |rating|    
+  - @ratings.each do |rating|
     %p
       %label{:for => "issues_rating_id"}
         = rating.name
