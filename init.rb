@@ -19,7 +19,7 @@ Redmine::Plugin.register :redmine_issues_quality do
     :caption => :label_rating_plural, :html => {:class => :enumerations}
 
   project_module :issue_tracking do
-    permission :close_issues_without_quality
+    permission :close_issues_without_quality, {}
   end
 
 end
