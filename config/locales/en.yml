@@ -7,3 +7,4 @@ en:
   label_quality: "Quality"
   label_rate_issues_quality: "Rate of issues quality"
   field_rating: "Issues quality"
+  permission_close_issues_without_quality: "Closing issues without quality"

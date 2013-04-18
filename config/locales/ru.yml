@@ -7,3 +7,4 @@ ru:
   label_quality: "Оценка качества"
   label_rate_issues_quality: "Оцените качество выполнения работы"
   field_rating: "Качество выполнения"
+  permission_close_issues_without_quality: "Закрытие задач без оценки"

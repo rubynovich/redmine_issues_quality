@@ -13,9 +13,15 @@ Redmine::Plugin.register :redmine_issues_quality do
                          :issue_status => IssueStatus.last(:conditions => {:is_closed => false}, :order => :position).id
                        },
            :partial => 'ratings/settings'
+
   menu :admin_menu, :rating,
     {:controller => :ratings, :action => :index},
     :caption => :label_rating_plural, :html => {:class => :enumerations}
+
+  project_module :issue_tracking do
+    permission :close_issues_without_quality
+  end
+
 end
 
 if Rails::VERSION::MAJOR < 3
