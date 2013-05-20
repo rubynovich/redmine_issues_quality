@@ -6,7 +6,7 @@ Redmine::Plugin.register :redmine_issues_quality do
   author 'Roman Shipiev'
   description "The plugin allows you to rate the quality of issues before they are closed. In the settings of the module you need to set the status in which the problem can be close"
   version '0.0.1'
-  url 'http://github.com/rubynovich/redmine_issues_quality.git'
+  url 'https://bitbucket.org/rubynovich/redmine_issues_quality.git'
   author_url 'http://roman.shipiev.me'
 
   settings :default => {
