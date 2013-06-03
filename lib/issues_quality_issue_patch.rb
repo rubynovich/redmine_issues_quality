@@ -16,7 +16,8 @@ module IssuesQualityPlugin
           o.status.is_closed? &&
             Setting[:plugin_redmine_issues_quality][:issue_status].to_i == Issue.find(o.id).status_id &&
             !User.current.admin? &&
-            !User.current.allowed_to?(:close_issues_without_quality, o.project)
+            !User.current.allowed_to?(:close_issues_without_quality, o.project) &&
+            (User.current != o.assigned_to)
         }
 
         belongs_to :rating
